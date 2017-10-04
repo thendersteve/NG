@@ -1,0 +1,27 @@
+//  
+//  File name:  png.js
+//  Created on: Thursday, November 27, 2003
+//  Author:     Mike Cherichetti
+//
+//  Description:
+//    This JavaScript is used to implement alpha transparency
+//    with PNG files in Internet Explorer 5.5/6.0  The trick here
+//    is to use the DirectX API to apply alpha transformations
+//    and overlay a transparent GIF over top of the PNG file.
+//
+//  Compatability Testing:
+//    Firefox:  1
+//    MSIE:     5, 6
+//    Netscape: 7
+//    Opera:    7
+//
+
+function fixAlphaPNG (element)
+{
+  if (browser.isWin && browser.isIE && (browser.isIE55 || browser.isIE6x))
+  {
+    element.onload = null;
+    element.style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='" + element.src + "',sizingMethod='scale')";
+    element.src = transPixel;
+  }
+}

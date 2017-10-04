@@ -1,0 +1,171 @@
+//  
+//  File name:  gui.js
+//  Created on: Monday, February 10, 2003
+//  Rewritten on: Friday, February 8, 2013
+//  Author:     Mike Cherichetti
+//
+//  Description:
+//    This JavaScript is used for handling resizeable GUI objects.
+//
+//  Compatability Testing:
+//    Chrome:   24
+//    Firefox:  18
+//    MSIE:     9
+//    Opera:    12
+//
+
+var guiInitScripts = [];
+
+var guiCallbacks = [];
+
+var guiCachedWidths = {
+  full: 0, half: 0, quarter: 0, full_tab: 0, half_tab: 0, quarter_tab: 0
+};
+
+guiCallbacks.push(
+  function() {
+    var tagNames = ['input', 'select', 'textarea'];
+
+    for (var t = 0; t < tagNames.length; t++) {
+        var elements = document.getElementsByTagName(tagNames[t]);
+
+        if (elements) {
+          for (var e = 0; e < elements.length; e++) {
+            if (elements[e] && elements[e].originalWidth) {
+              elements[e].style.width = elements[e].originalWidth + 'px';
+            }
+          }
+        }
+    }
+  }
+);
+
+function guiReload (noCache)
+{
+  if (document.body.lastKnownResize && (new Date().getTime() - document.body.lastKnownResize) <= 250) {
+    return;
+  }
+
+  var bodyWidth = guiGetElementWidth(document.body);
+  var bodyHeight = guiGetElementHeight(document.body);
+
+  var useCachedWidths = false;
+
+  if (document.body.lastKnownWidth && document.body.lastKnownWidth == bodyWidth) {
+    if (document.body.lastKnownHeight && document.body.lastKnownHeight == bodyHeight) {
+      useCachedWidths = true;
+    }
+  }
+
+  else {
+    document.body.lastKnownWidth = bodyWidth;
+    document.body.lastKnownHeight = bodyHeight;
+  }
+
+  if (noCache || useCachedWidths == false) {
+    for (var c = 0; c < guiCallbacks.length; c++) {
+      guiCallbacks[c]();
+    }
+  }
+
+  var tagNames = ['input', 'select', 'textarea'];
+  var typeNames = ['full', 'half', 'quarter', 'full_tab', 'half_tab', 'quarter_tab'];
+
+  var extra = {
+    input: { full: 0, half: -1, quarter: -2, full_tab: 0, half_tab: -1, quarter_tab: -2 },
+    select: { full: 6, half: 4, quarter: 4, full_tab: 4, half_tab: 4, quarter_tab: 4 },
+    textarea: { full: 1, half: -1, quarter: -2, full_tab: 0, half_tab: -1, quarter_tab: -2 }
+  }
+
+  var widths = (useCachedWidths == true) ? guiCachedWidths : {
+      full: 0, half: 0, quarter: 0, full_tab: 0, half_tab: 0, quarter_tab: 0
+  };
+
+  for (var t = 0; t < tagNames.length; t++) {
+    var elements = document.getElementsByTagName(tagNames[t]);
+
+    if (elements) {
+      for (var e = 0; e < elements.length; e++) {
+        if (elements[e] && elements[e].parentNode && guiNeedsResizing(typeNames, elements[e]) == true) {
+          if (!elements[e].originalWidth) {
+            elements[e].originalWidth = 250;
+          }
+
+          var className = (elements[e].className) ? elements[e].className : elements[e].style;
+
+          if (elements[e].className && className.indexOf(' ') != -1) {
+            className = className.substring(0, className.indexOf(' '));
+          }
+
+          if (widths[className] > 0) {
+            elements[e].style.width = (widths[className] + extra[tagNames[t]][className]) + 'px';
+          }
+
+          else {
+            var calculatedWidth = (guiGetElementWidth(elements[e].parentNode) - 6);
+
+            if (calculatedWidth > 0) {
+              widths[className] = calculatedWidth;
+
+              elements[e].style.width = (widths[className] + extra[tagNames[t]][className]) + 'px';
+
+              if (className.indexOf('_tab') == -1) {
+                widths[className+'_tab'] = widths[className] - guiGetTabOffset(className+'_tab');
+              }
+
+              if (className == 'half') {
+                if (widths['full'] == 0) {
+                  widths['full'] = Math.floor((widths['half'] * 2) + 28);
+                  widths['full_tab'] = (widths['full'] - guiGetTabOffset('full_tab'));
+                }
+
+                if (widths['quarter'] == 0) {
+                  widths['quarter'] = Math.floor((widths['half'] - 28) / 2);
+                  widths['quarter_tab'] = (widths['quarter'] - guiGetTabOffset('quarter_tab'));
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  guiCachedWidths = widths;
+
+  for (var c = 0; c < guiInitScripts.length; c++) {
+    guiInitScripts[c]();
+  }
+
+  if (guiInitScripts.length > 0) {
+    guiInitScripts = [];
+    guiReload();
+  }
+
+  else {
+    document.body.lastKnownResize = new Date().getTime();
+  }
+}
+
+function guiGetTabOffset (name) {
+  return (name == 'full_tab') ? 52 : (name == 'half_tab') ? 26 : (name == 'quarter_tab') ? 13 : 0;
+}
+
+function guiNeedsResizing (names, element) {
+  var className = (element.className) ? element.className : element.style;
+  if (element.className && className.indexOf(' ') != -1) {
+    className = className.substring(0, className.indexOf(' '));
+  }
+  for (var n = 0; n < names.length; n++) {
+    if (names[n] == className) { return true; }
+  }
+  return false;
+}
+
+function guiGetElementHeight (element) {
+  return (element.scrollHeight) ? element.scrollHeight : (element.offsetHeight) ? element.offsetHeight : element.clientHeight;
+}
+
+function guiGetElementWidth (element) {
+  return (element.scrollWidth) ? element.scrollWidth : (element.offsetWidth) ? element.offsetWidth : element.clientWidth;
+}

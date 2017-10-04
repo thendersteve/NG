@@ -1,0 +1,368 @@
+/* 
+  File name:  panel.css
+  Created on: December 12, 2002 at 4:05 PM
+  Author:     Mike Cherichetti
+
+  Description:
+    This stylesheet contains classes used by the panel templates.
+*/
+
+
+/*
+ Standard Tile
+*/
+
+table.tile
+{
+    font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+}
+
+
+td.tile_header
+{
+    background-color: #003B6E;
+    color: #FFFFFF;
+    font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    padding-top: 2px;
+    padding-left: 6px;
+    padding-right: 6px;
+    padding-bottom: 6px;
+    text-decoration: none;
+    line-height: 24px;
+}
+
+
+td.tile_content
+{
+    background-color: #FFFFFF;
+    color: #000000;
+    font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    padding-top: 12px;
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-bottom: 8px;
+    text-decoration: none;
+}
+
+
+td.tile_area
+{
+    background-color: #FFFFFF;
+    color: #000000;
+    font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    padding-top: 12px;
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-bottom: 12px;
+    text-decoration: none;
+}
+
+
+td.tile_field
+{
+    background-color: #FFFFFF;
+    color: #000000;
+    font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    padding-top: 12px;
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-bottom: 12px;
+    text-decoration: none;
+}
+
+
+td.tile_outline
+{
+    background-color: #848684;
+}
+
+
+td.tile_subarea
+{
+    background-color: #FFFFFF;
+    color: #000000;
+    font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    padding-top: 12px;
+    padding-left: 6px;
+    padding-right: 6px;
+    padding-bottom: 0px;
+    text-decoration: none;
+}
+
+
+td.tile_sub_header
+{
+    background-color: #D6E6F0;
+    color: #003B6E;
+    font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 6px;
+    text-decoration: none;
+}
+
+
+td.tile_sub_content
+{
+    background-color: #FFFFFF;
+    color: #000000;
+    font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    padding: 8px;
+    text-decoration: none;
+}
+
+
+td.tile_sub_footer
+{
+    background-color: #A2C7DE;
+}
+
+
+td.tile_subheading_header
+{
+    background-color: #EBEBEB;
+    color: #000000;
+    font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 6px;
+    text-decoration: none;
+}
+
+
+td.tile_subheading_content
+{
+    background-color: #FFFFFF;
+    color: #000000;
+    font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    padding-top: 16px;
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-bottom: 16px;
+    text-decoration: none;
+}
+
+
+td.tile_subheading_footer
+{
+    background-color: #D6D6D6;
+}
+
+
+/*
+ Standard Tile Confirmation
+*/
+
+table.tile_confirm
+{
+    background-color: #848684;
+}
+
+td.tile_confirm_content
+{
+    background-color: #FFFFFF;
+    color: #000000;
+    font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    padding: 16px;
+    text-decoration: none;
+}
+
+td.tile_confirm_title
+{
+    background-color: #003B6E;
+    color: #FFFFFF;
+    font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 6px;
+    text-decoration: none;
+}
+
+
+/*
+ Standard Tile Navigation
+*/
+
+td.tile_navigation_content
+{
+    background-color: #F7F7F7;
+    color: #000000;
+    font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    padding: 6px;
+    text-decoration: none;
+}
+
+
+td.tile_navigation_side
+{
+    background-color: #003B6E;
+}
+
+
+td.tile_navigation_title
+{
+    background-color: #003B6E;
+    color: #FFFFFF;
+    font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 6px;
+    text-decoration: none;
+    line-height: 24px;
+}
+
+
+/*
+ Standard Tile Messages
+*/
+
+table.tile_message_error
+{
+    background-color: #FFD0CF;
+}
+
+
+td.tile_message_error_outer
+{
+    background-color: #FFD0CF;
+    color: #000000;
+    font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    padding: 12px;
+    text-decoration: none;
+}
+
+
+td.tile_message_error_inner
+{
+    background-color: #FFD0CF;
+    color: #000000;
+    font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+
+table.tile_message_info
+{
+    background-color: #CFEEFF;
+}
+
+
+td.tile_message_info_outer
+{
+    background-color: #CFEEFF;
+    color: #000000;
+    font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    padding: 12px;
+    text-decoration: none;
+}
+
+
+td.tile_message_info_inner
+{
+    background-color: #CFEEFF;
+    color: #000000;
+    font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+
+table.tile_message_question
+{
+    background-color: #FFCFF9;
+}
+
+
+td.tile_message_question_outer
+{
+    background-color: #FFCFF9;
+    color: #000000;
+    font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    padding: 12px;
+    text-decoration: none;
+}
+
+
+td.tile_message_question_inner
+{
+    background-color: #FFCFF9;
+    color: #000000;
+    font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+
+table.tile_message_warn
+{
+    background-color: #FEFFCF;
+}
+
+
+td.tile_message_warn_outer
+{
+    background-color: #FEFFCF;
+    color: #000000;
+    font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    padding: 12px;
+    text-decoration: none;
+}
+
+
+td.tile_message_warn_inner
+{
+    background-color: #FEFFCF;
+    color: #000000;
+    font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+
+/*
+  Standard Tile Help
+*/
+
+table.tile_help
+{
+    background-color: #FDFFCF;
+    border-width : 1px;
+    border-style : solid;
+    border-color : #C6C3C6;
+}
+
+
+td.tile_help_outer
+{
+    background-color: #FDFFCF;
+    color: #000000;
+    font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    padding: 12px;
+    text-decoration: none;
+}
+
+
+td.tile_help_inner
+{
+    background-color: #FDFFCF;
+    color: #000000;
+    font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    text-decoration: none;
+}
